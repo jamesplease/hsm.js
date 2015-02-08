@@ -61,6 +61,13 @@
     "exportFileName": "hsm",
     "entryFileName": "hsm",
     "exportVarName": "Hsm",
-    "mochaGlobals": ["stub", "spy", "expect"]
+    "mochaGlobals": [
+      "stub",
+      "spy",
+      "expect"
+    ]
+  },
+  "dependencies": {
+    "namespace-diff": "0.0.1"
   }
 }

@@ -1,3 +1,4 @@
+import namespaceDiff from 'namespace-diff';
 import _ from 'underscore';
 import State from './state';
 
@@ -43,25 +44,12 @@ Hsm.prototype.transitionTo = function(newState) {
   if (!this.hasState(newState)) { return; }
   var stop = false;
   var cancel = function() { stop = true; };
-  var diff = this.diff(this._currentState, newState);
+  var diff = namespaceDiff(this._currentState, newState);
   Promise.resolve(this.willTransition(diff, cancel))
     .then(function() {
       if (stop) { return false; }
       this._currentState = newState;
     });
-};
-
-Hsm.prototype.diff = function(start, end) {
-  var startStates = start.split('.');
-  var endStates = end.split('.');
-  for (var i = 0; i < startStates.length; i++) {
-    if (startStates[i] !== endStates[i]) {  break; }
-  }
-
-  return {
-    exitStates: _.rest(startStates, i).reverse(),
-    enterStates: _.rest(endStates, i)
-  };
 };
 
 Hsm.prototype.hasState = function(stateName) {
