@@ -13,39 +13,46 @@ describe('transitionTo', function() {
     stub(this.hsm, 'transition');
   });
 
-  describe('when not in any state, transitioning to undefined', function() {
-    beforeEach(function() {
-      this.hsm.transitionTo(undefined);
+  describe('when in an undefined state', function() {
+    describe('transitioning to undefined', function() {
+      beforeEach(function() {
+        this.hsm.transitionTo(undefined);
+      });
+
+      it('should not call transition', function() {
+        expect(this.hsm.transition).to.not.have.beenCalled;
+      });
     });
 
-    it('should not call transition', function() {
-      expect(this.hsm.transition).to.not.have.beenCalled;
-    });
-  });
+    describe('attempting to transition into a nonexistent state', function() {
+      beforeEach(function() {
+        this.hsm.transitionTo('does.not.exist');
+      });
 
-  describe('when attempting to transition into a nonexistent state', function() {
-    beforeEach(function() {
-      this.hsm.transitionTo('does.not.exist');
-    });
-
-    it('should not call transition', function() {
-      expect(this.hsm.transition).to.not.have.beenCalled;
-    });
-  });
-
-  describe('when transitioning to a state', function() {
-    beforeEach(function() {
-      this.hsm.transitionTo('books.index');
+      it('should not call transition', function() {
+        expect(this.hsm.transition).to.not.have.beenCalled;
+      });
     });
 
-    it('should call transition', function() {
-      expect(this.hsm.transition).to.have.been.calledOnce;
-    });
+    describe('when transitioning to a state', function() {
+      beforeEach(function(done) {
+        this.hsm.transitionTo('books.book')
+          .then(done);
+      });
 
-    it('should pass the diff as the first argument', function() {
-      expect(this.hsm.transition).to.have.been.calledWith({
-        out: undefined,
-        in: ['books', 'index']
+      it('should call transition', function() {
+        expect(this.hsm.transition).to.have.been.calledOnce;
+      });
+
+      it('should pass the diff as the first argument', function() {
+        expect(this.hsm.transition).to.have.been.calledWith({
+          out: undefined,
+          in: ['books', 'book']
+        });
+      });
+
+      it('should be in the new state', function() {
+        expect(this.hsm.currentStateName()).to.equal('books.book');
       });
     });
   });

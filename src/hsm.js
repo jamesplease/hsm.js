@@ -27,6 +27,7 @@ Hsm.prototype.setState = function(stateName, stateDef) {
 
 // Get the current state name
 Hsm.prototype.currentStateName = function() {
+  console.log('returning', this._currentStateName);
   return this._currentStateName;
 };
 
@@ -62,10 +63,10 @@ Hsm.prototype.transitionTo = function(newState) {
   }
 
   var hsm = this;
-  Promise.resolve(this.transition(diff, cancel))
+  return Promise.resolve(this.transition(diff, cancel))
     .then(function() {
       if (stop) { return false; }
-      hsm._currentState = newState;
+      hsm._currentStateName = newState;
     });
 };
 
