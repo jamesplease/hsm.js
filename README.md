@@ -34,5 +34,10 @@ This library is intentionally unopinionated about two things:
 The point is that you can use this library to define more opinionated states
 and the mechanism of transitions to solve problems.
 
+### The `index` State
+
+If a given state needs custom behavior that does not happen when its children states are
+activated, then you can use the `index` state.
+
 ### API
 

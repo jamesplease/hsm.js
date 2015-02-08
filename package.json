@@ -56,6 +56,9 @@
     "sinon-chai": "^2.6.0",
     "vinyl-source-stream": "^1.0.0"
   },
+  "dependencies": {
+    "namespace-diff": "0.0.1"
+  },
   "to5BoilerplateOptions": {
     "destinationFolder": "dist",
     "exportFileName": "hsm",
@@ -66,8 +69,5 @@
       "spy",
       "expect"
     ]
-  },
-  "dependencies": {
-    "namespace-diff": "0.0.1"
   }
 }
