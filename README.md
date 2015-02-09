@@ -9,29 +9,27 @@ A minimal hierarchal state machine for Javascript.
 
 ### What is a state machine?
 
-A state machine is a thing that consists of a number of states. At any time, it can
-only be in exactly one state at a time.
-
-The name 'state machine' is shorthand for 'finite state machine,' which describes another
-property of these objects: they have a finite number of states.
+A state machine is a thing that consists of a finite number of states. At any time, it can
+only be in exactly one of those states. The name 'state machine' is an abbreviation of 'finite
+state machine.'
 
 ### What is a hierarchal state machine?
 
-A state machine that has a notion of nested states is called a hierarchal state machine. When
-a nested state is active, all of its parent states are also active.
+A state machine with a notion of nested states is called a hierarchal state machine. When
+a nested state is active, each of its parent states are also active.
 
-### What's this library?
+### What is this library?
 
-This library provides the scaffolding to represent a system like the above. It provides
-a hook for asynchronous transitions, but is unopinionated about what a state is, and how
-to transition between two states.
+This library provides a barebones implementation of the above system. It remains
+unopinionated about two things:
 
-The point is that you can use build from this library to solve problems.
+1. What a state is
+2. How to transition between two states
 
-### The `index` State
+It has two opinions of importance:
 
-If a given state needs custom behavior that does not happen when its children states are
-activated, then you can use the `index` state.
+1. Child states cannot be defined before parent states
+2. Transitions are always asynchronous
 
 ### API
 
@@ -127,11 +125,11 @@ To get a better understanding of what I mean, consider these states:
 }
 ```
 
-When you transition to `books.book`, both `books` and `book` will be called. If
-instead you transition to just `books`, only `books` is triggered. This is fine
-in some situations, but what if you want something special to happen only when you
-land on `books`, but not when you enter a child of `books`? That's what the `index`
-route is for.
+When you transition to `books.book`, both `books` and `book` will be entered. If
+instead you transition to just `books`, only `books` is triggered, as you might
+have guessed. This is fine in some situations, but what if you want something special
+to happen only when you land on `books`, but not when you enter a child of `books`? That's
+what the `index` route is for.
 
 Taking those same routes from above:
 
@@ -144,7 +142,6 @@ Taking those same routes from above:
 }
 ```
 
-Transitioning to `books.book` is exactly the same. But if you transition to `books`,
-both `books` and `index` will be activated.
-
-Note that tansitioning to `books` and `books.index` behaves identically.
+Transitioning to `books.book` remains the same. But if you transition to `books`,
+both `books` and `index` will be activated, giving you a unique state for `books` by
+itself. Transitioning to `books` and `books.index` behave identically.
