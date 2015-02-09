@@ -1,0 +1,74 @@
+{
+  "name": "hsm.js",
+  "version": "0.0.1",
+  "description": "A minimal hierarchal state machine for Javascript.",
+  "main": "dist/hsm.js",
+  "scripts": {
+    "test": "gulp",
+    "test-browser": "gulp test-browser",
+    "build": "gulp build",
+    "coverage": "gulp coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmeas/hsm.js.git"
+  },
+  "keywords": [
+    "state machine",
+    "state",
+    "fsm",
+    "hierarchy",
+    "hsm",
+    "hierarchal",
+    "nested"
+  ],
+  "author": "Jmeas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmeas/hsm.js/issues"
+  },
+  "homepage": "https://github.com/jmeas/hsm.js",
+  "devDependencies": {
+    "6to5": "^3.3.3",
+    "browserify": "^8.1.1",
+    "chai": "^1.10.0",
+    "del": "^1.1.1",
+    "esperanto": "^0.6.7",
+    "gulp": "^3.8.10",
+    "gulp-6to5": "^3.0.0",
+    "gulp-file": "^0.2.0",
+    "gulp-filter": "^2.0.0",
+    "gulp-istanbul": "^0.6.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-livereload": "^3.4.0",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-mocha": "^2.0.0",
+    "gulp-notify": "^2.1.0",
+    "gulp-plumber": "^0.6.6",
+    "gulp-rename": "^1.2.0",
+    "gulp-sourcemaps": "^1.3.0",
+    "gulp-uglifyjs": "^0.5.0",
+    "isparta": "^1.0.1",
+    "jshint-stylish": "^1.0.0",
+    "mocha": "^2.1.0",
+    "rsvp": "^3.0.16",
+    "run-sequence": "^1.0.2",
+    "sinon": "^1.12.2",
+    "sinon-chai": "^2.6.0",
+    "vinyl-source-stream": "^1.0.0"
+  },
+  "dependencies": {
+    "namespace-diff": "0.0.1"
+  },
+  "to5BoilerplateOptions": {
+    "destinationFolder": "dist",
+    "exportFileName": "hsm",
+    "entryFileName": "hsm",
+    "exportVarName": "Hsm",
+    "mochaGlobals": [
+      "stub",
+      "spy",
+      "expect"
+    ]
+  }
+}

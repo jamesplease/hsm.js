@@ -1,0 +1,27 @@
+{
+  "name": "hsm",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jmeas/hsm.js",
+  "authors": [
+    "Jmeas <jellyes2@gmail.com>"
+  ],
+  "description": "A minimal hierarchal state machine for Javascript.",
+  "main": "dist/hsm.js",
+  "keywords": [
+    "state machine",
+    "state",
+    "fsm",
+    "hierarchal",
+    "hsm",
+    "hierarchy",
+    "nested"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
