@@ -57,7 +57,8 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "dependencies": {
-    "namespace-diff": "0.0.1"
+    "namespace-diff": "0.0.1",
+    "rsvp": "^3.0.16"
   },
   "to5BoilerplateOptions": {
     "destinationFolder": "dist",

@@ -6,7 +6,6 @@ var Hsm = function(options = {}) {
   // Add states passed in as options
   var states = options.states;
   for (var stateName in states) {
-    if(!states.hasOwnProperty(stateName)){ return; }
     this.setState(stateName, states[stateName]);
   }
 };
@@ -27,7 +26,6 @@ Hsm.prototype.setState = function(stateName, stateDef) {
 
 // Get the current state name
 Hsm.prototype.currentStateName = function() {
-  console.log('returning', this._currentStateName);
   return this._currentStateName;
 };
 
@@ -45,8 +43,8 @@ Hsm.prototype.getState = function(stateName) {
 Hsm.prototype.transitionTo = function(newState) {
   if (this.currentState() === newState) { return; }
   if (!this.hasState(newState)) { return; }
-  var stop = false;
-  var cancel = function() { stop = true; };
+  var canceled = false;
+  var cancel = function() { canceled = true; };
 
   // Determine if we have an index state specified.
   // If so, we will transition to that instead
@@ -57,15 +55,15 @@ Hsm.prototype.transitionTo = function(newState) {
 
   var diff;
   if (!this.currentState()) {
-    diff = {out: undefined, in: newState.split('.')};
+    diff = {outStates: [], inStates: newState.split('.')};
   } else {
-    diff = namespaceDiff(this._currentState, newState);
+    diff = namespaceDiff(this.currentStateName(), newState);
   }
 
   var hsm = this;
   return Promise.resolve(this.transition(diff, cancel))
     .then(function() {
-      if (stop) { return false; }
+      if (canceled) { return false; }
       hsm._currentStateName = newState;
     });
 };

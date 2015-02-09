@@ -20,19 +20,13 @@ property of these objects: they have a finite number of states.
 A state machine that has a notion of nested states is called a hierarchal state machine. When
 a nested state is active, all of its parent states are also active.
 
-### What does this library do?
+### What's this library?
 
-This library provides the scaffolding to represent a system like the above.
+This library provides the scaffolding to represent a system like the above. It provides
+a hook for asynchronous transitions, but is unopinionated about what a state is, and how
+to transition between two states.
 
-### What doesn't this library do?
-
-This library is intentionally unopinionated about two things:
-
-1. What a state is
-2. What happens when you transition between states
-
-The point is that you can use this library to define more opinionated states
-and the mechanism of transitions to solve problems.
+The point is that you can use build from this library to solve problems.
 
 ### The `index` State
 
