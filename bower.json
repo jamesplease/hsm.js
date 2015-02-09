@@ -1,6 +1,6 @@
 {
-  "name": "hsm",
-  "version": "0.0.1",
+  "name": "hsm.js",
+  "version": "0.0.2",
   "homepage": "https://github.com/jmeas/hsm.js",
   "authors": [
     "Jmeas <jellyes2@gmail.com>"

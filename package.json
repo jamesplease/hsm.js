@@ -1,6 +1,6 @@
 {
   "name": "hsm.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A minimal hierarchal state machine for Javascript.",
   "main": "dist/hsm.js",
   "scripts": {
