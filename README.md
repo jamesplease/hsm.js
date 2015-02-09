@@ -1,9 +1,9 @@
 # hsm.js
-[![Travis build status](http://img.shields.io/travis/6to5/6to5-library-boilerplate.svg?style=flat)](https://travis-ci.org/6to5/6to5-library-boilerplate)
-[![Code Climate](https://codeclimate.com/github/6to5/6to5-library-boilerplate/badges/gpa.svg)](https://codeclimate.com/github/6to5/6to5-library-boilerplate)
-[![Test Coverage](https://codeclimate.com/github/6to5/6to5-library-boilerplate/badges/coverage.svg)](https://codeclimate.com/github/6to5/6to5-library-boilerplate)
-[![Dependency Status](https://david-dm.org/6to5/6to5-library-boilerplate.svg)](https://david-dm.org/6to5/6to5-library-boilerplate)
-[![devDependency Status](https://david-dm.org/6to5/6to5-library-boilerplate/dev-status.svg)](https://david-dm.org/6to5/6to5-library-boilerplate#info=devDependencies)
+[![Travis build status](http://img.shields.io/travis/jmeas/hsm.js.svg?style=flat)](https://travis-ci.org/jmeas/hsm.js)
+[![Code Climate](https://codeclimate.com/github/jmeas/hsm.js/badges/gpa.svg)](https://codeclimate.com/github/jmeas/hsm.js)
+[![Test Coverage](https://codeclimate.com/github/jmeas/hsm.js/badges/coverage.svg)](https://codeclimate.com/github/jmeas/hsm.js)
+[![Dependency Status](https://david-dm.org/jmeas/hsm.js.svg)](https://david-dm.org/jmeas/hsm.js)
+[![devDependency Status](https://david-dm.org/jmeas/hsm.js/dev-status.svg)](https://david-dm.org/jmeas/hsm.js#info=devDependencies)
 
 A minimal hierarchal state machine for Javascript.
 
