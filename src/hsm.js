@@ -24,6 +24,16 @@ Hsm.prototype.setState = function(stateName, stateDef) {
   this._states[stateName] = stateDef;
 };
 
+// Get a state by its name
+Hsm.prototype.getState = function(stateName) {
+  return this._states[stateName];
+};
+
+// Whether or not the given state exists
+Hsm.prototype.hasState = function(stateName) {
+  return !!this._states[stateName];
+};
+
 // Get the current state name
 Hsm.prototype.currentStateName = function() {
   return this._currentStateName;
@@ -32,11 +42,6 @@ Hsm.prototype.currentStateName = function() {
 // Get the current state
 Hsm.prototype.currentState = function() {
   return this._states[this._currentStateName];
-};
-
-// Get a state by its name
-Hsm.prototype.getState = function(stateName) {
-  return this._states[stateName];
 };
 
 // Transition to a new state
@@ -66,11 +71,6 @@ Hsm.prototype.transitionTo = function(newState) {
       if (canceled) { return false; }
       hsm._currentStateName = newState;
     });
-};
-
-// Whether or not the given state exists
-Hsm.prototype.hasState = function(stateName) {
-  return !!this._states[stateName];
 };
 
 // A hook to write your own transition that can be

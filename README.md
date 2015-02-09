@@ -35,3 +35,116 @@ activated, then you can use the `index` state.
 
 ### API
 
+##### `Hsm.getParentStateName( stateName )`
+
+Given a state, get the value of the parent state.
+
+```js
+Hsm.getParentStateName('cheese.is.good');
+// => 'cheese.is'
+```
+
+##### `constructor( options )`
+
+Create a new instance of Hsm. Pass the `states` option to populate the state machine with those states.
+
+```js
+var hsm = new Hsm({
+  states: {
+    '': IndexState,
+    'books': BooksState,
+    'books.book': BookState
+  }
+});
+```
+
+Hsm instances are created in an `undefined` state. You must transition
+to the initial state manually.
+
+##### `setState( stateName, stateDefinition )`
+
+Set a new state. `stateDefinition` can be anything – this library
+does nothing with the states. `stateName` can be anything as well,
+but an Error will be thrown if the parent state does not exist.
+
+```js
+hsm.setState('food', FoodState);
+hsm.setState('food.breakfast', BreakfastState);
+```
+
+##### `getState( stateName )`
+
+Access the object that represents `stateName`.
+
+##### `hasState( stateName )`
+
+Returns a Boolean representing whether or not `stateName` has
+been set.
+
+##### `currentStateName()`
+
+Return the name of the current state.
+
+##### `currentState()`
+
+Return the object that represents the current state.
+
+##### `transitionTo( newState )`
+
+Asynchronously transition to `newState` by delegating to `transition`. This
+method is not intended to be overridden. To customize the transition behavior,
+use the `transition` hook described below.
+
+##### `transition( stateDiff, cancel )`
+
+Define an asynchronous transition. `stateDiff` is an object representing the
+difference between the current state and the new state.
+
+An example diff between `books.book.author` and `books.comments` is:
+
+```js
+{
+  outStates: ['author', 'book'],
+  inStates: ['comments']
+}
+```
+
+Call `cancel` to cancel the transition.
+
+###### A note on transition to `index`
+
+Defining an `index` state at any other state gives you an opportunity
+to enter a unique state that is only triggered when you land **on** that state,
+but not on a child state.
+
+To get a better understanding of what I mean, consider these states:
+
+```js
+{
+  '': RootState,
+  'books': BooksRoute,
+  'books.book': BookRoute
+}
+```
+
+When you transition to `books.book`, both `books` and `book` will be called. If
+instead you transition to just `books`, only `books` is triggered. This is fine
+in some situations, but what if you want something special to happen only when you
+land on `books`, but not when you enter a child of `books`? That's what the `index`
+route is for.
+
+Taking those same routes from above:
+
+```js
+{
+  '': RootState,
+  'books': BooksRoute,
+  'books.index': BookIndexRoute,
+  'books.book': BookRoute
+}
+```
+
+Transitioning to `books.book` is exactly the same. But if you transition to `books`,
+both `books` and `index` will be activated.
+
+Note that tansitioning to `books` and `books.index` behaves identically.
