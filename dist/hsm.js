@@ -71,11 +71,7 @@
     }
 
     var diff;
-    if (!this.currentState()) {
-      diff = { outStates: [], inStates: newState.split(".") };
-    } else {
-      diff = namespaceDiff(this.currentStateName(), newState);
-    }
+    diff = namespaceDiff(this.currentStateName(), newState);
 
     var hsm = this;
     return Promise.resolve(this.transition(diff, cancel)).then(function () {
