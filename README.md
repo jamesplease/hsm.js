@@ -102,8 +102,8 @@ An example diff between `books.book.author` and `books.comments` is:
 
 ```js
 {
-  outStates: ['author', 'book'],
-  inStates: ['comments']
+  outStates: ['books.book.author', 'books.book'],
+  inStates: ['books.comments']
 }
 ```
 
