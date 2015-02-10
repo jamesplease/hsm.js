@@ -50,7 +50,7 @@ describe('transitionTo', function() {
       it('should pass the diff as the first argument', function() {
         expect(this.hsm.transition).to.have.been.calledWith({
           outStates: [],
-          inStates: ['comments', 'comment']
+          inStates: ['comments', 'comments.comment']
         });
       });
 
@@ -92,7 +92,7 @@ describe('transitionTo', function() {
       it('should call transition with the correct diff', function() {
         expect(this.hsm.transition).to.have.been.calledWith({
           outStates: [],
-          inStates: ['author']
+          inStates: ['comments.comment.author']
         });
       });
     });
@@ -105,7 +105,7 @@ describe('transitionTo', function() {
 
       it('should call transition with the correct diff', function() {
         expect(this.hsm.transition).to.have.been.calledWith({
-          outStates: ['comment'],
+          outStates: ['comments.comment'],
           inStates: []
         });
       });
@@ -119,8 +119,8 @@ describe('transitionTo', function() {
 
       it('should call transition with the correct diff', function() {
         expect(this.hsm.transition).to.have.been.calledWith({
-          outStates: ['comment', 'comments'],
-          inStates: ['books', 'book']
+          outStates: ['comments.comment', 'comments'],
+          inStates: ['books', 'books.book']
         });
       });
     });
@@ -133,8 +133,8 @@ describe('transitionTo', function() {
 
       it('should call transition with the correct diff', function() {
         expect(this.hsm.transition).to.have.been.calledWith({
-          outStates: ['comment', 'comments'],
-          inStates: ['books', 'index']
+          outStates: ['comments.comment', 'comments'],
+          inStates: ['books', 'books.index']
         });
       });
     });
@@ -147,8 +147,8 @@ describe('transitionTo', function() {
 
       it('should call transition with the same diff', function() {
         expect(this.hsm.transition).to.have.been.calledWith({
-          outStates: ['comment', 'comments'],
-          inStates: ['books', 'index']
+          outStates: ['comments.comment', 'comments'],
+          inStates: ['books', 'books.index']
         });
       });
     });
