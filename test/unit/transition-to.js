@@ -37,6 +37,28 @@ describe('transitionTo', function() {
       });
     });
 
+    describe('when transitioning to the index state', function() {
+      beforeEach(function(done) {
+        this.hsm.transitionTo('')
+          .then(done);
+      });
+
+      it('should call transition', function() {
+        expect(this.hsm.transition).to.have.been.calledOnce;
+      });
+
+      it('should pass the diff as the first argument', function() {
+        expect(this.hsm.transition).to.have.been.calledWith({
+          outStates: [],
+          inStates: ['']
+        });
+      });
+
+      it('should be in the new state', function() {
+        expect(this.hsm.currentStateName()).to.equal('');
+      });
+    });
+
     describe('when transitioning to a state', function() {
       beforeEach(function(done) {
         this.hsm.transitionTo('comments.comment')
@@ -50,7 +72,7 @@ describe('transitionTo', function() {
       it('should pass the diff as the first argument', function() {
         expect(this.hsm.transition).to.have.been.calledWith({
           outStates: [],
-          inStates: ['comments', 'comments.comment']
+          inStates: ['', 'comments', 'comments.comment']
         });
       });
 
