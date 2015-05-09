@@ -54,7 +54,7 @@ Hsm.prototype.transitionTo = function(newState) {
   // Determine if we have an index state specified.
   // If so, we will transition to that instead
   var indexState = newState + '.index';
-  if (this.hasState(indexState)) {
+  if (newState !== '' && this.hasState(indexState)) {
     newState = indexState;
   }
 
